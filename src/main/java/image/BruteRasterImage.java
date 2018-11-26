@@ -2,22 +2,33 @@ package image;
 
 
 import javafx.scene.paint.Color;
+import util.Matrices;
 
 public class BruteRasterImage implements Image{
     private int width,height;
     private Color[][] pixels;
 
     public BruteRasterImage(Color color,int width,int height){
-        this.width=width;
-        this.height=height;
-        this.pixels=new Color[width][height];
+        setWidth(width);
+        setHeight(height);
+
+        createRepresentation();
         setPixelsColor(color);
     }
 
     public BruteRasterImage(Color[][] pixels){
-        this.width=pixels.length;
-        this.height=pixels[0].length;
-        this.pixels=pixels;
+        Matrices.requiresNonNull(pixels);
+        Matrices.requiresNonZeroDimensions(pixels);
+        Matrices.requiresRectangularMatrix(pixels);
+
+        setWidth(pixels.length);
+        setHeight(pixels[0].length);
+        createRepresentation();
+        setPixelsColor(pixels);
+    }
+
+    public void createRepresentation(){
+        this.pixels=new Color[width][height];
     }
 
     public void setPixelColor(Color color,int x,int y){
@@ -29,16 +40,20 @@ public class BruteRasterImage implements Image{
         return pixels[x][y];
     }
 
-    public void setPixelsColor(Color[][] pixels){
-        setWidth(pixels.length);
-        setHeight(pixels[0].length);
-        this.pixels=pixels;
+    private void setPixelsColor(Color[][] pixels){
+
+        for (int x=0;x<this.width;x++){
+            for (int y=0;y<this.height;y++) {
+                setPixelColor(pixels[x][y],x,y);
+            }
+        }
     }
 
-    public void setPixelsColor(Color color){
+    private void setPixelsColor(Color color){
+
         for (int x=0;x<this.width;x++){
             for (int y=0;y<this.height;y++){
-                this.pixels[x][y]=color;
+                setPixelColor(color,x,y);
             }
         }
     }
@@ -53,11 +68,11 @@ public class BruteRasterImage implements Image{
         return this.height;
     }
 
-    public void setWidth(int width) {
+    protected void setWidth(int width) {
         this.width = width;
     }
 
-    public void setHeight(int height) {
+    protected void setHeight(int height) {
         this.height = height;
     }
 }

@@ -1,6 +1,8 @@
 package image;
 
 import javafx.scene.paint.Color;
+
+import java.util.HashMap;
 import java.util.Map;
 
 public class SparseRasterImage extends RasterImage {
@@ -15,7 +17,7 @@ public class SparseRasterImage extends RasterImage {
     }
     @Override
     public void createRepresentation(){
-
+        this.pixelsMap = new HashMap<Point,Color>();
     }
     @Override
     public void setPixelColor(Color color, int x, int y){
@@ -23,6 +25,9 @@ public class SparseRasterImage extends RasterImage {
     }
     @Override
     public Color getPixelColor(int x, int y){
-        return null;
+        if (this.pixelsMap.containsKey(new Point(x,y))) {
+            return this.pixelsMap.get(new Point(x, y));
+        }
+        return Color.WHITE;
     }
 }

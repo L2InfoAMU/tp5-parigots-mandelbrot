@@ -21,13 +21,12 @@ public class SparseRasterImage extends RasterImage {
     }
     @Override
     public void setPixelColor(Color color, int x, int y){
-
+        if(color != Color.WHITE) {
+            this.pixelsMap.put(new Point(x, y), color);
+        }
     }
     @Override
     public Color getPixelColor(int x, int y){
-        if (this.pixelsMap.containsKey(new Point(x,y))) {
-            return this.pixelsMap.get(new Point(x, y));
-        }
-        return Color.WHITE;
+        return this.pixelsMap.getOrDefault(new Point(x, y),Color.WHITE);
     }
 }

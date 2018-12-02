@@ -3,10 +3,27 @@ package image;
 import javafx.scene.paint.Color;
 import util.Matrices;
 
-public abstract class RasterImage<E> implements Image{
+public abstract class RasterImage implements Image{
     private int width,height;
-    private E[][] matrix;
 
+    public RasterImage(Color color,int width,int height){
+        setWidth(width);
+        setHeight(height);
+
+        createRepresentation();
+        setPixelsColor(color);
+    }
+
+    public RasterImage(Color[][] pixels){
+        Matrices.requiresNonNull(pixels);
+        Matrices.requiresNonZeroDimensions(pixels);
+        Matrices.requiresRectangularMatrix(pixels);
+
+        setWidth(pixels.length);
+        setHeight(pixels[0].length);
+        createRepresentation();
+        setPixelsColor(pixels);
+    }
 
     public abstract void createRepresentation();
     public abstract void setPixelColor(Color color, int x, int y);

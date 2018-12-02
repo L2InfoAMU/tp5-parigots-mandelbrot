@@ -26,7 +26,10 @@ public class Display implements Initializable {
         // affiche un carré rouge
         //imageFactory = new RasterUniformImageFactory(200,200, Color.RED, RasterImageType.BRUTE);
         // affiche le drapeau de la france
-        imageFactory = new RasterFlagFactory(900, 600, Color.BLUE, Color.WHITE, Color.RED, RasterImageType.BRUTE);
+        // version BruteRasterImage
+        //imageFactory = new RasterFlagFactory(900, 600, Color.BLUE, Color.WHITE, Color.RED, RasterImageType.BRUTE);
+        // version PaletteRasterImage
+        imageFactory = new RasterFlagFactory(900, 600, Color.BLUE, Color.WHITE, Color.RED, RasterImageType.PALETTE);
         this.image = imageFactory.makeImage();
 
         render();

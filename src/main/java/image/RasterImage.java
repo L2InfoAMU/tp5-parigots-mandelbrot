@@ -29,7 +29,7 @@ public abstract class RasterImage implements Image{
     public abstract void setPixelColor(Color color, int x, int y);
     public abstract Color getPixelColor(int x, int y);
 
-    private void setPixelsColor(Color[][] pixels){
+    public void setPixelsColor(Color[][] pixels){
 
         for (int x=0;x<this.width;x++){
             for (int y=0;y<this.height;y++) {

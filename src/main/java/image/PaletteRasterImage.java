@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaletteRasterImage extends RasterImage{
-    private int width,height;
     private List<Color> palette;
     private int[][] indexesOfColor;
 

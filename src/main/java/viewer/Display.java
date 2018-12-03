@@ -31,7 +31,9 @@ public class Display implements Initializable {
         // version PaletteRasterImage
         //imageFactory = new RasterFlagFactory(900, 600, Color.BLUE, Color.WHITE, Color.RED, RasterImageType.PALETTE);
         // version SparseRasterImage
-        imageFactory = new RasterFlagFactory(900, 600, Color.BLUE, Color.WHITE, Color.RED, RasterImageType.SPARSE);
+        //imageFactory = new RasterFlagFactory(900, 600, Color.BLUE, Color.WHITE, Color.RED, RasterImageType.SPARSE);
+        imageFactory = new LogoLISFactory();
+
         this.image = imageFactory.makeImage();
 
         render();

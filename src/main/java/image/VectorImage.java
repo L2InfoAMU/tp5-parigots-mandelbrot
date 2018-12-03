@@ -22,7 +22,7 @@ public class VectorImage implements Image {
                 return shape.getColor();
             }
         }
-        return null;
+        return Color.WHITE;
     }
 
     public int getWidth(){

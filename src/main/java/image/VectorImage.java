@@ -11,10 +11,17 @@ public class VectorImage implements Image {
     public int height;
 
     public VectorImage(List<Shape> shapes, int width , int height){
-
+        setHeight(height);
+        setWidth(width);
+        this.shapes=shapes;
     }
 
     public Color getPixelColor(int x, int y){
+        for (Shape shape: shapes) {
+            if(shape.contains(new Point(x,y))){
+                return shape.getColor();
+            }
+        }
         return null;
     }
 

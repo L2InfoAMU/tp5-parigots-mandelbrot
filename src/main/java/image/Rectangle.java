@@ -9,7 +9,6 @@ public class Rectangle implements Shape {
     private int height;
     private int width;
     private Color color;
-    private Pixel[][] pixels;
 
 
     public Rectangle(int x, int y, int width, int height, Color color){
@@ -18,15 +17,6 @@ public class Rectangle implements Shape {
         setCoordy(y);
         setHeight(height);
         setWidth(width);
-
-        int i,j;
-        for(i=x-width;i<=x;i++) {
-            for(j=y-height;j<=height;j++){
-                pixels[i][j] = new Pixel(i,j,color);
-            }
-        }
-
-
     }
 
     public void setColor(Color color) {
@@ -70,7 +60,7 @@ public class Rectangle implements Shape {
     }
 
     public boolean contains(Point point){
-        return(point.x <= getCoordx() && point.x >= getCoordx()-getWidth() && point.y >= getCoordy()-getHeight() && point.y <= getCoordy());
+        return(point.x >= getCoordx() && point.x <= getCoordx()+getWidth() && point.y <= getCoordy()+getHeight() && point.y >= getCoordy());
     }
 
 

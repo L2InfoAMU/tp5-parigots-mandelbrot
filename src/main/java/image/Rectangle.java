@@ -33,19 +33,19 @@ public class Rectangle implements Shape {
         this.color = color;
     }
 
-    public void setCoordx(int coordx) {
+    private void setCoordx(int coordx) {
         this.coordx = coordx;
     }
 
-    public void setCoordy(int coordy) {
+    private void setCoordy(int coordy) {
         this.coordy = coordy;
     }
 
-    public void setHeight(int height) {
+    private void setHeight(int height) {
         this.height = height;
     }
 
-    public void setWidth(int width) {
+    private void setWidth(int width) {
         this.width = width;
     }
 
